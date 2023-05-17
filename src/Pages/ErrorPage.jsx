@@ -11,7 +11,7 @@ const ErrorPage = () => {
         alt=""
       />
 
-      <div className="mt-0 absolute bottom-28">
+      <div className="mt-0 absolute bottom-40 sm:bottom-36 md:bottom-28">
         <h3 className="text-2xl font-bold">Look like you're lost</h3>
 
         <p className="capitalize my-2">the page you are looking for not avaible!</p>
