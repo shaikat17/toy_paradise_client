@@ -17,7 +17,7 @@ import rocket from "../assets/icons/rocketLogo.svg";
 const Footer = () => {
   return (
     <section
-      className="h-fit bg-cover bg-no-repeat pt-20 pb-40"
+      className="h-fit bg-cover bg-no-repeat pt-20 pb-40 px-2"
       style={{ backgroundImage: `url(${footer})` }}
     >
       <div className="flex flex-col items-center w-full">
@@ -71,12 +71,12 @@ const Footer = () => {
               <FaEnvelope size={"1.2rem"} /> toy-paradise@mail.com
             </p>
           </div>
-          <div>
+          <div className="flex flex-col p-3">
             <h1 className="mb-5 font-black text-xl">Payment Options</h1>
             <div className="flex flex-wrap gap-4 p-2">
-              <FaCcVisa size={"2rem"} color="#F45050" /> 
-              <FaCcStripe size={"2rem"} color="#F45050" /> 
-              <FaCcMastercard size={"2rem"} color="#F45050" /> 
+              <FaCcVisa size={"2rem"} color="#F45050" />
+              <FaCcStripe size={"2rem"} color="#F45050" />
+              <FaCcMastercard size={"2rem"} color="#F45050" />
               <FaCcPaypal size={"2rem"} color="#F45050" />
               <img className="w-16" src={bkash} alt="bkash" />
               <img className="w-14" src={nagad} alt="nagad" />
