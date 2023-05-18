@@ -12,10 +12,12 @@ const MyToys = () => {
     localStorage.getItem("userEmail") || user?.email
   );
   const [myToys, setMyToys] = useState([]);
+  const [srtValue, setSrtValue] = useState('')
 
   const { dataLoading, setDataLoading } = useGlobalContext()
 
   useEffect(() => {
+    // console.log(userEmail)
     setDataLoading(true)
     fetch(`https://toy-paradise-server.vercel.app/user-toys/?email=${userEmail}`)
       .then((res) => res.json())
@@ -24,6 +26,18 @@ const MyToys = () => {
         setDataLoading(false)
       });
   }, []);
+
+  const handleSort = (e) => {
+    setSrtValue(e.target.value)
+    setDataLoading(true)
+    fetch(`https://toy-paradise-server.vercel.app/user-toys/?email=${userEmail}&sort=${e.target.value}`)
+      .then((res) => res.json())
+      .then((data) => {
+        // console.log(data)
+        setMyToys(data)
+        setDataLoading(false)
+      });
+  }
 
   const deleteProduct = id => {
     // e.preventDefault()
@@ -79,6 +93,24 @@ const MyToys = () => {
 
   return (
     <div className="overflow-x-auto w-full">
+        <h1 className="text-center text-4xl font-black my-3">My <span className="border-b-4 border-[#56BC97]">Toys</span></h1>
+        <div className="flex items-center space-x-4 my-3">
+            <label htmlFor="option" className="font-bold">
+              Sort Toys:
+            </label>
+            <select
+              id="option"
+              className="px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+              name="category"
+              value={srtValue}
+              onChange={handleSort}
+              required
+            >
+              <option value="">Sort Toys with Price</option>
+              <option value="ascending">Ascending</option>
+              <option value="descending">Descending</option>
+            </select>
+          </div>
       <table className="table w-full">
         {/* head */}
         <thead>

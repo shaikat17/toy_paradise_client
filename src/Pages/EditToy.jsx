@@ -47,6 +47,7 @@ const EditToy = () => {
       .then((res) => res.json())
       .then((data) => {
         // console.log(data)
+        getToy();
         if (data.acknowledged) {
           Swal.fire({
             title: "Success!",
@@ -54,9 +55,8 @@ const EditToy = () => {
             icon: "success",
             confirmButtonText: "Cool",
           });
-          getToy();
-          setDataLoading(false)
         }
+        setDataLoading(false)
       });
 
     form.reset();
