@@ -3,6 +3,7 @@ import CommonLayout from '../Layouts/CommonLayout';
 import HomeBanner from '../Components/HomeBanner';
 import FeatureSection from '../Components/Feature';
 import { useGlobalContext } from '../context/AppAuthContext';
+import NewsLetter from '../Components/NewsLetter';
 
 const Home = () => {
     const value = useGlobalContext()
@@ -11,6 +12,7 @@ const Home = () => {
         <>
         <HomeBanner />
         <FeatureSection />
+        <NewsLetter />
         </>
     );
 };
