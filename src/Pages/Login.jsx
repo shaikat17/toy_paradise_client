@@ -17,7 +17,7 @@ function Login() {
 
   const from = location.state?.from?.pathname || "/";
 
-  const { signWithGoogle, loading } = useGlobalContext()
+  const { signWithGoogle, loading, signWithGithub } = useGlobalContext()
 
   const handleSubmit = (event) => {
     event.preventDefault();
@@ -55,18 +55,19 @@ function Login() {
       .catch((error) => console.log(error));
   };
 
-  // github signin
-  const handleGithubSignin = () => {
-    // setLoading(true)
-    signWithGithub()
-      .then((result) => {
-        const loggedUser = result.user;
-        // console.log(loggedUser);
-        navigate(from, { replace: true });
-        // setLoading(false)
-      })
-      .catch((error) => console.log(error));
-  };
+    // github signin
+    const handleGithubSignin = () => {
+      // setLoading(true)
+      signWithGithub()
+        .then((result) => {
+          const loggedUser = result.user;
+          // console.log(loggedUser);
+          navigate(from, { replace: true });
+          // setLoading(false)
+        })
+        .catch((error) => console.log(error));
+    };
+
 
   const handleResetPassword = () => {
     setError('')

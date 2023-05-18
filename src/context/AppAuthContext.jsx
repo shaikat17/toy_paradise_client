@@ -19,6 +19,12 @@ const AppAuthContextProvider = ({ children }) => {
     return signInWithPopup(auth, googleProvider);
   };
 
+   // github signin
+   const signWithGithub = () => {
+    setLoading(true);
+    return signInWithPopup(auth, githubProvider);
+  };
+
  // logout function
  const logOut = () => {
     return signOut(auth);
@@ -54,7 +60,8 @@ const updateUserProfile = (user = user, uName, photoUrl) => {
             user,
             loading,
             setLoading,
-            updateUserProfile
+            updateUserProfile,
+            signWithGithub
         }}>
             {children}
         </AppAuthContext.Provider>

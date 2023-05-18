@@ -1,8 +1,9 @@
-import React, { useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import ToyCard from '../Components/ToyCard';
 
 const AllToys = () => {
     const [toys, setToys] = useState([])
+    
 
     useEffect(() => {
         fetch('https://toy-paradise-server.vercel.app/all-toys')
