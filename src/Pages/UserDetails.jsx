@@ -2,6 +2,7 @@ import React, { useState } from "react";
 // import { toast } from 'react-toastify';
 import { getAuth } from "firebase/auth";
 import { useGlobalContext } from "../context/AppAuthContext";
+import Swal from "sweetalert2";
 
 function UserDetails() {
     const { updateUserProfile, setLoading, updateUserEmail } = useGlobalContext()
@@ -19,6 +20,13 @@ function UserDetails() {
         console.log(userEmail)
         updateUserProfile( user, userName, photoUrl)
         .then(() => {
+          Swal.fire({
+            position: "center",
+            icon: "success",
+            title: "Profile Updated Successfully",
+            showConfirmButton: false,
+            timer: 1500,
+          });
             // toast.success('Profile Update Successful.')
             // console.log('updated')
             setLoading(false)
