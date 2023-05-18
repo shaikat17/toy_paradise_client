@@ -1,14 +1,12 @@
-import React from 'react'
-import ReactDOM from 'react-dom/client'
-import App from './App.jsx'
-import './index.css'
-import {
-  createBrowserRouter,
-  RouterProvider,
-} from "react-router-dom";
-import Home from './Pages/Home.jsx';
-import CommonLayout from './Layouts/CommonLayout.jsx';
-import ErrorPage from './Pages/ErrorPage.jsx';
+import React from "react";
+import ReactDOM from "react-dom/client";
+import "./index.css";
+import { createBrowserRouter, RouterProvider } from "react-router-dom";
+import Home from "./Pages/Home.jsx";
+import CommonLayout from "./Layouts/CommonLayout.jsx";
+import ErrorPage from "./Pages/ErrorPage.jsx";
+import AddToy from "./Pages/AddToy.jsx";
+import { AppAuthContextProvider } from "./context/AppAuthContext";
 
 const router = createBrowserRouter([
   {
@@ -18,14 +16,26 @@ const router = createBrowserRouter([
     children: [
       {
         path: "/",
-        element: <Home />
-      }
-    ]
+        element: <Home />,
+      },
+    ],
+  },
+  {
+    path: "/add-toy",
+    element: <CommonLayout />,
+    children: [
+      {
+        path: "/add-toy",
+        element: <AddToy />,
+      },
+    ],
   },
 ]);
 
-ReactDOM.createRoot(document.getElementById('root')).render(
+ReactDOM.createRoot(document.getElementById("root")).render(
   <React.StrictMode>
-    <RouterProvider router={router} />
-  </React.StrictMode>,
-)
+    <AppAuthContextProvider>
+      <RouterProvider router={router} />
+    </AppAuthContextProvider>
+  </React.StrictMode>
+);
