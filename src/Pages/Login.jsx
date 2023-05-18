@@ -5,6 +5,7 @@ import { FaGithub } from "react-icons/fa";
 import { useState } from "react";
 import { useGlobalContext } from "../context/AppAuthContext";
 import { ColorRing } from "react-loader-spinner";
+import Swal from "sweetalert2";
 
 function Login() {
   const [email, setEmail] = useState("");
@@ -17,7 +18,7 @@ function Login() {
 
   const from = location.state?.from?.pathname || "/";
 
-  const { signWithGoogle, loading, signWithGithub } = useGlobalContext()
+  const { signWithGoogle, setLoading, loading, signWithGithub, signin, resetPassword } = useGlobalContext()
 
   const handleSubmit = (event) => {
     event.preventDefault();
@@ -32,6 +33,7 @@ function Login() {
     signin(email, password)
       .then((result) => {
         const loggedUser = result.user;
+        localStorage.setItem('userEmail', email)
         // console.log(loggedUser);
         navigate(from, { replace: true });
       })
@@ -61,11 +63,27 @@ function Login() {
       signWithGithub()
         .then((result) => {
           const loggedUser = result.user;
-          // console.log(loggedUser);
+          console.log(loggedUser);
           navigate(from, { replace: true });
           // setLoading(false)
         })
-        .catch((error) => console.log(error));
+        .catch((error) => {
+          console.log(error)
+          Swal.fire({
+            position: "center",
+            icon: "error",
+            title: "Opps!! Something went wrong. Please Try Again...",
+            showConfirmButton: true,
+            // timer: 1500,
+            confirmButtonText: 'Go Back'
+          }).then((result) => {
+            /* Read more about isConfirmed, isDenied below */
+            if (result.isConfirmed) {
+              console.log("hello")
+              window.location.reload()
+            } 
+          })
+        });
     };
 
 

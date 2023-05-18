@@ -6,7 +6,7 @@ import { useGlobalContext } from "../context/AppAuthContext";
 const PrivateRoute = ({ children }) => {
   const { user, loading, setLoading } = useGlobalContext();
   const location = useLocation();
-  console.log(loading);
+  // console.log(loading);
 
   // useEffect(() => {
   //   setLoading(false)

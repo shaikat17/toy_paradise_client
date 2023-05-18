@@ -1,5 +1,6 @@
 import { useContext, useState } from 'react';
 import { NavLink, useNavigate } from 'react-router-dom';
+import { useGlobalContext } from '../context/AppAuthContext';
 
 const Register = () => {
     const [userName, setUserName] = useState('');
@@ -8,6 +9,7 @@ const Register = () => {
   const [photoUrl, setPhotoUrl] = useState('');
   const [error, setError] = useState('')
 
+  const { createUser, logOut, updateUserProfile } = useGlobalContext()
 
   const navigate = useNavigate()
 
@@ -24,6 +26,7 @@ const Register = () => {
     .then(result => {
       const loggedUser = result.user
       // console.log(loggedUser)
+      localStorage.setItem('userEmail', email)
       updateUserProfile(loggedUser, userName, photoUrl)
       .then(updateResult => console.log(updateResult))
       .catch(err => console.log(err))

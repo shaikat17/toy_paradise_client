@@ -7,6 +7,7 @@ const Navbar = () => {
 
   const handleSingOut = () => {
     logOut().then((res) => console.log("logout"));
+    localStorage.removeItem('userEmail')
   };
   return (
     <>

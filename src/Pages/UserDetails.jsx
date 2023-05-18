@@ -4,17 +4,19 @@ import { getAuth } from "firebase/auth";
 import { useGlobalContext } from "../context/AppAuthContext";
 
 function UserDetails() {
-    const { updateUserProfile, setLoading } = useGlobalContext()
+    const { updateUserProfile, setLoading, updateUserEmail } = useGlobalContext()
 
     const auth = getAuth()
 
     const user = auth.currentUser
 
-    const [userName, setUserName] = useState(user.displayName)
-    const [photoUrl, setPhotoUrl] = useState(user.photoURL)
+    const [userName, setUserName] = useState(user?.displayName)
+    const [userEmail, setUserEmail] = useState(user?.email)
+    const [photoUrl, setPhotoUrl] = useState(user?.photoURL)
     
     const handleSubmit = (e) => {
         e.preventDefault()
+        console.log(userEmail)
         updateUserProfile( user, userName, photoUrl)
         .then(() => {
             // toast.success('Profile Update Successful.')
@@ -22,6 +24,10 @@ function UserDetails() {
             setLoading(false)
         })
         .catch(err => console.log(err))
+
+        // save email to local storage
+        localStorage.setItem('userEmail', userEmail)
+        
     }
   return (
     <div className="shadow-lg rounded-lg overflow-hidden flex flex-col md:flex-row">
@@ -64,6 +70,24 @@ function UserDetails() {
                   required
                   value={userName}
                   onChange={(e) => setUserName(e.target.value)}
+                  className="appearance-none block w-full px-3 py-2 border border-[#56BC97] rounded-md shadow-sm placeholder-gray-400 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
+                  placeholder="Enter your user name"
+                />
+              </div>
+            </div>
+
+            <div>
+              <label htmlFor="userEmail" className="block text-sm font-medium">
+                Email
+              </label>
+              <div className="mt-1">
+                <input
+                  id="userEmail"
+                  name="userEmail"
+                  type="text"
+                  required
+                  value={userEmail}
+                  onChange={(e) => setUserEmail(e.target.value)}
                   className="appearance-none block w-full px-3 py-2 border border-[#56BC97] rounded-md shadow-sm placeholder-gray-400 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
                   placeholder="Enter your user name"
                 />

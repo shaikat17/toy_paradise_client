@@ -2,6 +2,7 @@ import React from "react";
 import ReactDOM from "react-dom/client";
 import "./index.css";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
+import '@smastrom/react-rating/style.css'
 import Home from "./Pages/Home.jsx";
 import CommonLayout from "./Layouts/CommonLayout.jsx";
 import ErrorPage from "./Pages/ErrorPage.jsx";

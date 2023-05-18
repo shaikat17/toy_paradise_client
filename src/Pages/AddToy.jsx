@@ -1,6 +1,8 @@
 import Swal from "sweetalert2";
+import { useGlobalContext } from "../context/AppAuthContext";
 
 const AddToy = () => {
+  const { user } = useGlobalContext()
   const formHandle = (e) => {
     e.preventDefault();
     const form = e.target;
@@ -14,6 +16,9 @@ const AddToy = () => {
     const toyRating = form.toyRating.value;
     const quantity = form.quantity.value;
     const description = form.description.value;
+
+    // save user email at localStorage
+    localStorage.setItem("userEmail", userEmail)
 
     const data = {
       toyPhotoUrl,
@@ -80,13 +85,15 @@ const AddToy = () => {
             type="text"
             placeholder="Your Name"
             name="userName"
+            defaultValue={user?.displayName}
             className="border-b-2 px-3 py-2 border-x-2 rounded-md w-full max-w-xs"
             required
           />
           <input
             type="text"
-            placeholder="Your Email"
+            placeholder="Enter Your Registered Email"
             name="userEmail"
+            defaultValue={localStorage.getItem("userEmail") || user?.email}
             className="border-b-2 px-3 py-2 border-x-2 rounded-md w-full max-w-xs"
             required
           />
@@ -101,10 +108,10 @@ const AddToy = () => {
               required
             >
               <option value="">Choose a Category</option>
-              <option value="item1">Baby Doll</option>
-              <option value="item2">Fashion Doll</option>
-              <option value="item3">Character Doll</option>
-              <option value="item3">Animal Doll</option>
+              <option value="Baby Doll">Baby Doll</option>
+              <option value="Fashion Doll">Fashion Doll</option>
+              <option value="Character Doll">Character Doll</option>
+              <option value="Animal Doll">Animal Doll</option>
             </select>
           </div>
           <input
@@ -130,7 +137,7 @@ const AddToy = () => {
           />
           <textarea
             placeholder="Description"
-            className="border-b-2 px-3 py-2 border-x-2 rounded-md w-full max-w-xs"
+            className="border-b-2 px-3 py-2 border-x-2 rounded-md w-full max-w-xs text-black"
             name="description" rows="6"
             required
           ></textarea>
