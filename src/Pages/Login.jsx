@@ -3,6 +3,7 @@ import { NavLink, useLocation, useNavigate } from "react-router-dom";
 import { FcGoogle } from "react-icons/fc";
 import { FaGithub } from "react-icons/fa";
 import { useState } from "react";
+import { useGlobalContext } from "../context/AppAuthContext";
 
 function Login() {
   const [email, setEmail] = useState("");
@@ -15,6 +16,7 @@ function Login() {
 
   const from = location.state?.from?.pathname || "/";
 
+  const { signWithGoogle } = useGlobalContext()
 
   const handleSubmit = (event) => {
     event.preventDefault();
@@ -45,7 +47,7 @@ function Login() {
     signWithGoogle()
       .then((result) => {
         const loggedUser = result.user;
-        // console.log(loggedUser);
+        console.log(loggedUser);
         navigate(from, { replace: true });
         // setLoading(false)
       })

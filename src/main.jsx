@@ -12,6 +12,7 @@ import AllToys from "./Pages/AllToys";
 import MyToys from "./Pages/MyToys";
 import Login from "./Pages/Login";
 import Register from "./Pages/Register";
+import UserDetails from "./Pages/UserDetails";
 
 const router = createBrowserRouter([
   {
@@ -82,6 +83,16 @@ const router = createBrowserRouter([
       {
         path: "/register",
         element: <Register />,
+      },
+    ],
+  },
+  {
+    path: "/userdetails",
+    element: <CommonLayout />,
+    children: [
+      {
+        path: "/userdetails",
+        element: <UserDetails />,
       },
     ],
   },
