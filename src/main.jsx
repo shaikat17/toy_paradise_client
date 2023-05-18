@@ -7,6 +7,9 @@ import CommonLayout from "./Layouts/CommonLayout.jsx";
 import ErrorPage from "./Pages/ErrorPage.jsx";
 import AddToy from "./Pages/AddToy.jsx";
 import { AppAuthContextProvider } from "./context/AppAuthContext";
+import Blog from "./Pages/Blog";
+import AllToys from "./Pages/AllToys";
+import MyToys from "./Pages/MyToys";
 
 const router = createBrowserRouter([
   {
@@ -27,6 +30,36 @@ const router = createBrowserRouter([
       {
         path: "/add-toy",
         element: <AddToy />,
+      },
+    ],
+  },
+  {
+    path: "/blog",
+    element: <CommonLayout />,
+    children: [
+      {
+        path: "/blog",
+        element: <Blog />,
+      },
+    ],
+  },
+  {
+    path: "/all-toys",
+    element: <CommonLayout />,
+    children: [
+      {
+        path: "/all-toys",
+        element: <AllToys />,
+      },
+    ],
+  },
+  {
+    path: "/my-toys",
+    element: <CommonLayout />,
+    children: [
+      {
+        path: "/my-toys",
+        element: <MyToys />,
       },
     ],
   },

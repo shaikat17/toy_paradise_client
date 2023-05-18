@@ -2,10 +2,11 @@ import React from 'react';
 import CommonLayout from '../Layouts/CommonLayout';
 import HomeBanner from '../Components/HomeBanner';
 import FeatureSection from '../Components/Feature';
+import { useGlobalContext } from '../context/AppAuthContext';
 
 const Home = () => {
-    // const value = useGlobalContext()
-    // console.log(value)
+    const value = useGlobalContext()
+    console.log(value)
     return (
         <>
         <HomeBanner />

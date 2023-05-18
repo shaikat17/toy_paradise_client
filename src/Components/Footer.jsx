@@ -9,6 +9,10 @@ import {
   FaCcStripe,
   FaCcMastercard,
   FaCcPaypal,
+  FaFacebook,
+  FaTwitter,
+  FaLinkedin,
+  FaInstagram,
 } from "react-icons/fa";
 import bkash from "../assets/icons/bkashLogo.svg";
 import nagad from "../assets/icons/nagadLogo.svg";
@@ -17,7 +21,7 @@ import rocket from "../assets/icons/rocketLogo.svg";
 const Footer = () => {
   return (
     <section
-      className="h-fit bg-cover bg-no-repeat pt-20 pb-40 px-2"
+      className="h-fit bg-cover bg-no-repeat pt-20 pb-10 px-2"
       style={{ backgroundImage: `url(${footer})` }}
     >
       <div className="flex flex-col items-center w-full">
@@ -57,7 +61,7 @@ const Footer = () => {
             </Link>
           </div>
           <div className="flex flex-col space-y-3">
-            <h1 className="mb-5 font-black text-xl">Location</h1>
+            <h1 className="mb-5 font-black text-xl">Contact Information</h1>
             <p className="flex items-center gap-2 mb-3">
               <AiFillClockCircle size={"1.2rem"} /> Mon. - Sun.: 09:00 - 18:30
             </p>
@@ -85,9 +89,15 @@ const Footer = () => {
           </div>
         </div>
       </div>
-      {/* <div className="absolute bottom-0">
-            <h1>logo</h1>
-        </div> */}
+     <div className="flex justify-between mt-48 pt-">
+      <div className="flex text-white gap-3">
+        <FaFacebook size={"1.5rem"} />
+        <FaTwitter size={"1.5rem"} />
+        <FaLinkedin size={"1.5rem"} />
+        <FaInstagram size={"1.5rem"} />
+      </div>
+      <div className="text-base font-light text-white">© 2023 Toy Paradise</div>
+     </div>
     </section>
   );
 };
