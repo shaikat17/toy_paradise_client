@@ -1,12 +1,12 @@
 import { createContext, useContext, useEffect, useState } from "react";
-import { GithubAuthProvider, GoogleAuthProvider, getAuth, onAuthStateChanged, signInWithPopup, signOut } from "firebase/auth";
+import { GithubAuthProvider, GoogleAuthProvider, getAuth, onAuthStateChanged, signInWithPopup, signOut, updateProfile } from "firebase/auth";
 import app from "../firebase/firebase.config";
 
 
 const AppAuthContext = createContext()
 
 const AppAuthContextProvider = ({ children }) => {
-    const [loading, setLoading] = useState(false)
+    const [loading, setLoading] = useState(true)
     const [user, setUser] = useState(false)
 
     const auth = getAuth(app)
@@ -22,6 +22,15 @@ const AppAuthContextProvider = ({ children }) => {
  // logout function
  const logOut = () => {
     return signOut(auth);
+  };
+
+//   update user information
+const updateUserProfile = (user = user, uName, photoUrl) => {
+    setLoading(true)
+    return updateProfile(user, {
+      displayName: uName,
+      photoURL: photoUrl,
+    });
   };
 
     // observe auth state change
@@ -43,7 +52,9 @@ const AppAuthContextProvider = ({ children }) => {
             signWithGoogle,
             logOut,
             user,
-            loading
+            loading,
+            setLoading,
+            updateUserProfile
         }}>
             {children}
         </AppAuthContext.Provider>

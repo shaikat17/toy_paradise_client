@@ -13,6 +13,7 @@ import MyToys from "./Pages/MyToys";
 import Login from "./Pages/Login";
 import Register from "./Pages/Register";
 import UserDetails from "./Pages/UserDetails";
+import PrivateRoute from "./PrivateRoute/PrivateRoute";
 
 const router = createBrowserRouter([
   {
@@ -52,7 +53,7 @@ const router = createBrowserRouter([
     children: [
       {
         path: "/all-toys",
-        element: <AllToys />,
+        element: <PrivateRoute><AllToys /></PrivateRoute>,
       },
     ],
   },
@@ -62,7 +63,7 @@ const router = createBrowserRouter([
     children: [
       {
         path: "/my-toys",
-        element: <MyToys />,
+        element: <PrivateRoute><MyToys /></PrivateRoute>,
       },
     ],
   },
@@ -92,7 +93,7 @@ const router = createBrowserRouter([
     children: [
       {
         path: "/userdetails",
-        element: <UserDetails />,
+        element: <PrivateRoute><UserDetails /></PrivateRoute>,
       },
     ],
   },
