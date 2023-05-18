@@ -7,7 +7,7 @@ const EditToy = () => {
   const { id } = useParams();
 
   const getToy = () => {
-    fetch(`http://localhost:3000/single-toy/${id}`)
+    fetch(`https://toy-paradise-server.vercel.app/single-toy/${id}`)
       .then((res) => res.json())
       .then((data) => setToy(data));
   }
@@ -29,7 +29,7 @@ const EditToy = () => {
 
     console.log(data);
 
-    fetch(`http://localhost:3000/edit-toy/${toy._id}`, {
+    fetch(`https://toy-paradise-server.vercel.app/edit-toy/${toy._id}`, {
       method: "PUT",
       headers: {
         "content-type": "application/json",
