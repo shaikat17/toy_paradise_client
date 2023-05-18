@@ -6,9 +6,8 @@ const Navbar = () => {
   const { logOut, user } = useGlobalContext();
 
   const handleSingOut = () => {
-    logOut()
-    .then(res => console.log("logout"))
-  }
+    logOut().then((res) => console.log("logout"));
+  };
   return (
     <>
       <div className="navbar bg-base-100">
@@ -47,72 +46,79 @@ const Navbar = () => {
                 </NavLink>
               </li>
               <li>
-              <NavLink
-                to="/all-toys"
-                className={({ isActive }) =>
-                  isActive
-                    ? "bg-transparent ml-2 uppercase text-[#56BC97] font-medium"
-                    : "bg-transparent ml-2 uppercase font-medium"
-                }
-              >
-                All Toys
-              </NavLink>
-            </li>
-            <li>
-              <NavLink
-                to="/my-toys"
-                className={({ isActive }) =>
-                  isActive
-                    ? "bg-transparent ml-2 uppercase text-[#56BC97] font-medium"
-                    : "bg-transparent ml-2 uppercase font-medium"
-                }
-              >
-                My Toys
-              </NavLink>
-            </li>
-            <li>
-              <NavLink
-                to="/add-toy"
-                className={({ isActive }) =>
-                  isActive
-                    ? "bg-transparent ml-2 uppercase text-[#56BC97] font-medium"
-                    : "bg-transparent ml-2 uppercase font-medium"
-                }
-              >
-                Add A Toy
-              </NavLink>
-            </li>
-            <li>
-              <NavLink
-                to="/blog"
-                className={({ isActive }) =>
-                  isActive
-                    ? "bg-transparent ml-2 uppercase text-[#56BC97] font-medium"
-                    : "bg-transparent ml-2 uppercase font-medium"
-                }
-              >
-                Blog
-              </NavLink>
-            </li>
-            {user ? <li>
-              <button className="uppercase font-medium bg-transparent" onClick={handleSingOut}>
-                Log Out
-              </button>
-            </li> : <li>
-              <NavLink
-                to="/login"
-                className={({ isActive }) =>
-                  isActive
-                    ? "bg-transparent ml-2 uppercase text-[#56BC97] font-medium"
-                    : "bg-transparent ml-2 uppercase font-medium"
-                }
-              >
-                Login
-              </NavLink>
-            </li>}
+                <NavLink
+                  to="/all-toys"
+                  className={({ isActive }) =>
+                    isActive
+                      ? "bg-transparent ml-2 uppercase text-[#56BC97] font-medium"
+                      : "bg-transparent ml-2 uppercase font-medium"
+                  }
+                >
+                  All Toys
+                </NavLink>
+              </li>
+              <li>
+                <NavLink
+                  to="/my-toys"
+                  className={({ isActive }) =>
+                    isActive
+                      ? "bg-transparent ml-2 uppercase text-[#56BC97] font-medium"
+                      : "bg-transparent ml-2 uppercase font-medium"
+                  }
+                >
+                  My Toys
+                </NavLink>
+              </li>
+              <li>
+                <NavLink
+                  to="/add-toy"
+                  className={({ isActive }) =>
+                    isActive
+                      ? "bg-transparent ml-2 uppercase text-[#56BC97] font-medium"
+                      : "bg-transparent ml-2 uppercase font-medium"
+                  }
+                >
+                  Add A Toy
+                </NavLink>
+              </li>
+              <li>
+                <NavLink
+                  to="/blog"
+                  className={({ isActive }) =>
+                    isActive
+                      ? "bg-transparent ml-2 uppercase text-[#56BC97] font-medium"
+                      : "bg-transparent ml-2 uppercase font-medium"
+                  }
+                >
+                  Blog
+                </NavLink>
+              </li>
+              {user ? (
+                <li>
+                  <button
+                    className="uppercase font-medium bg-transparent"
+                    onClick={handleSingOut}
+                  >
+                    Log Out
+                  </button>
+                </li>
+              ) : (
+                <li>
+                  <NavLink
+                    to="/login"
+                    className={({ isActive }) =>
+                      isActive
+                        ? "bg-transparent ml-2 uppercase text-[#56BC97] font-medium"
+                        : "bg-transparent ml-2 uppercase font-medium"
+                    }
+                  >
+                    Login
+                  </NavLink>
+                </li>
+              )}
             </ul>
           </div>
-          <a className="btn btn-ghost normal-case text-xl">daisyUI</a>
+          <a className="btn btn-ghost normal-case text-xl">Toy <span className="border-b-2 border-[#56BC97]">Paradise</span></a>
         </div>
         <div className="navbar-center hidden lg:flex">
           <ul className="menu menu-horizontal px-1">
@@ -176,34 +182,42 @@ const Navbar = () => {
                 Blog
               </NavLink>
             </li>
-            {user ? <li>
-              <button className="uppercase font-medium bg-transparent" onClick={handleSingOut}>
-                Log Out
-              </button>
-            </li> : <li>
-              <NavLink
-                to="/login"
-                className={({ isActive }) =>
-                  isActive
-                    ? "bg-transparent ml-2 uppercase text-[#56BC97] font-medium"
-                    : "bg-transparent ml-2 uppercase font-medium"
-                }
-              >
-                Login
-              </NavLink>
-            </li>}
+            {user ? (
+              <li>
+                <button
+                  className="uppercase font-medium bg-transparent"
+                  onClick={handleSingOut}
+                >
+                  Log Out
+                </button>
+              </li>
+            ) : (
+              <li>
+                <NavLink
+                  to="/login"
+                  className={({ isActive }) =>
+                    isActive
+                      ? "bg-transparent ml-2 uppercase text-[#56BC97] font-medium"
+                      : "bg-transparent ml-2 uppercase font-medium"
+                  }
+                >
+                  Login
+                </NavLink>
+              </li>
+            )}
           </ul>
         </div>
         <div className="navbar-end">
-        {user && <NavLink to="/userdetails">
-                  <img
-                    className="h-14 w-14 rounded-full"
-                    src={user?.photoURL}
-                    alt={user?.displayName}
-                    title={user?.displayName}
-                  />
-                </NavLink>
-            }
+          {user && (
+            <NavLink to="/userdetails">
+              <img
+                className="h-14 w-14 rounded-full"
+                src={user?.photoURL}
+                alt={user?.displayName}
+                title={user?.displayName}
+              />
+            </NavLink>
+          )}
         </div>
       </div>
     </>

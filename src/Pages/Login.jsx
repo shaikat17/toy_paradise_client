@@ -4,6 +4,7 @@ import { FcGoogle } from "react-icons/fc";
 import { FaGithub } from "react-icons/fa";
 import { useState } from "react";
 import { useGlobalContext } from "../context/AppAuthContext";
+import { ColorRing } from "react-loader-spinner";
 
 function Login() {
   const [email, setEmail] = useState("");
@@ -16,7 +17,7 @@ function Login() {
 
   const from = location.state?.from?.pathname || "/";
 
-  const { signWithGoogle } = useGlobalContext()
+  const { signWithGoogle, loading } = useGlobalContext()
 
   const handleSubmit = (event) => {
     event.preventDefault();
@@ -83,21 +84,21 @@ function Login() {
   
   }
 
-//   if (loading) {
-//     return (
-//       <div className="flex items-center justify-center">
-//         <ColorRing
-//           visible={true}
-//           height="80"
-//           width="80"
-//           ariaLabel="blocks-loading"
-//           wrapperStyle={{}}
-//           wrapperClass="blocks-wrapper"
-//           colors={["#e15b64", "#f47e60", "#f8b26a", "#abbd81", "#849b87"]}
-//         />
-//       </div>
-//     );
-//   }
+  if (loading) {
+    return (
+      <div className="flex items-center justify-center">
+        <ColorRing
+          visible={true}
+          height="80"
+          width="80"
+          ariaLabel="blocks-loading"
+          wrapperStyle={{}}
+          wrapperClass="blocks-wrapper"
+          colors={["#e15b64", "#f47e60", "#f8b26a", "#abbd81", "#849b87"]}
+        />
+      </div>
+    );
+  }
 
   return (
     <div className="flex items-center justify-center py-12 px-4 sm:px-6 lg:px-8">
@@ -156,11 +157,11 @@ function Login() {
             </div>
           </div>
 
-          <div className="flex items-center justify-between">
+          <div className="flex items-center justify-around">
             <div className="flex items-center">
               <p>Don't have an account?</p>
               <NavLink
-                className="bg-[#56BC97] text-white ml-2 p-1 rounded"
+                className="bg-[#56BC97] text-white mx-3 p-1 rounded"
                 to="/register"
               >
                 Register

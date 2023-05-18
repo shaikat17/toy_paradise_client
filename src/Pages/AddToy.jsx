@@ -29,7 +29,7 @@ const AddToy = () => {
 
     form.reset()
 
-    fetch("http://localhost:3000/add-toy", {
+    fetch("https://toy-paradise-server.vercel.app/add-toy", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(data),
