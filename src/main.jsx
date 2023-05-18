@@ -15,6 +15,7 @@ import Login from "./Pages/Login";
 import Register from "./Pages/Register";
 import UserDetails from "./Pages/UserDetails";
 import PrivateRoute from "./PrivateRoute/PrivateRoute";
+import EditToy from "./Pages/EditToy";
 
 const router = createBrowserRouter([
   {
@@ -95,6 +96,16 @@ const router = createBrowserRouter([
       {
         path: "/userdetails",
         element: <PrivateRoute><UserDetails /></PrivateRoute>,
+      },
+    ],
+  },
+  {
+    path: "/edit-toy/:id",
+    element: <CommonLayout />,
+    children: [
+      {
+        path: "/edit-toy/:id",
+        element: <PrivateRoute><EditToy /></PrivateRoute>,
       },
     ],
   },

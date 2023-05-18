@@ -2,6 +2,8 @@ import React, { useEffect, useState } from "react";
 import { Rating } from "@smastrom/react-rating";
 import { useGlobalContext } from "../context/AppAuthContext";
 import { FaPencilAlt, FaTrash } from "react-icons/fa";
+import { NavLink } from "react-router-dom";
+import Swal from "sweetalert2";
 
 const MyToys = () => {
   const { user } = useGlobalContext();
@@ -11,10 +13,44 @@ const MyToys = () => {
   const [myToys, setMyToys] = useState([]);
 
   useEffect(() => {
-    fetch(`http://localhost:3000/user-toys/?email=${userEmail}`)
+    fetch(`https://toy-paradise-server.vercel.app/user-toys/?email=${userEmail}`)
       .then((res) => res.json())
       .then((data) => setMyToys(data));
   }, []);
+
+  const deleteProduct = id => {
+    // e.preventDefault()
+    // console.log(id)
+
+    Swal.fire({
+      title: 'Are you want to delete it?',
+      text: "You won't be able to revert this!",
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonColor: '#3085d6',
+      cancelButtonColor: '#d33',
+      confirmButtonText: 'Yes, delete it!'
+    }).then((result) => {
+      if (result.isConfirmed) {
+        fetch(`http://localhost:3000/toy/${id}`, {
+          method: 'DELETE'
+        })
+        .then(res => res.json())
+        .then(data => {
+          // console.log(data)
+          if(data.deletedCount > 0) {
+            Swal.fire(
+              'Deleted!',
+              'Your file has been deleted.',
+              'success'
+            )
+            setMyToys(prev => prev.filter(toy => toy._id !== id))
+          }
+        })
+      }
+    })
+  }
+  
   return (
     <div className="overflow-x-auto w-full">
       <table className="table w-full">
@@ -69,9 +105,9 @@ const MyToys = () => {
                     {toy?.quantity}
                   </div>
                 </td>
-                <th className="space-x-5">
-                  <button><FaPencilAlt color="#56BC97" size={"1.5rem"} /></button>
-                  <button><FaTrash color="#56BC97" size={"1.5rem"} /></button>
+                <th className="space-x-5 flex">
+                  <NavLink to={`/edit-toy/${toy._id}`}><FaPencilAlt color="#56BC97" size={"1.5rem"} /></NavLink>
+                  <button onClick={() => deleteProduct(toy._id)}><FaTrash color="#56BC97" size={"1.5rem"} /></button>
                 </th>
               </tr>
             );
