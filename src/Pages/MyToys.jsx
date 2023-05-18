@@ -4,6 +4,7 @@ import { useGlobalContext } from "../context/AppAuthContext";
 import { FaPencilAlt, FaTrash } from "react-icons/fa";
 import { NavLink } from "react-router-dom";
 import Swal from "sweetalert2";
+import { ColorRing } from "react-loader-spinner";
 
 const MyToys = () => {
   const { user } = useGlobalContext();
@@ -12,10 +13,16 @@ const MyToys = () => {
   );
   const [myToys, setMyToys] = useState([]);
 
+  const { dataLoading, setDataLoading } = useGlobalContext()
+
   useEffect(() => {
+    setDataLoading(true)
     fetch(`https://toy-paradise-server.vercel.app/user-toys/?email=${userEmail}`)
       .then((res) => res.json())
-      .then((data) => setMyToys(data));
+      .then((data) => {
+        setMyToys(data)
+        setDataLoading(false)
+      });
   }, []);
 
   const deleteProduct = id => {
@@ -32,6 +39,7 @@ const MyToys = () => {
       confirmButtonText: 'Yes, delete it!'
     }).then((result) => {
       if (result.isConfirmed) {
+        setDataLoading(true)
         fetch(`https://toy-paradise-server.vercel.app/toy/${id}`, {
           method: 'DELETE'
         })
@@ -45,12 +53,30 @@ const MyToys = () => {
               'success'
             )
             setMyToys(prev => prev.filter(toy => toy._id !== id))
+            setDataLoading(false)
           }
         })
       }
     })
   }
   
+  if (dataLoading ) {
+    // console.log("priv", loading);
+    return (
+      <div className="flex items-center justify-center">
+        <ColorRing
+          visible={true}
+          height="80"
+          width="80"
+          ariaLabel="blocks-loading"
+          wrapperStyle={{}}
+          wrapperClass="blocks-wrapper"
+          colors={["#e15b64", "#f47e60", "#f8b26a", "#abbd81", "#849b87"]}
+        />
+      </div>
+    );
+  }
+
   return (
     <div className="overflow-x-auto w-full">
       <table className="table w-full">

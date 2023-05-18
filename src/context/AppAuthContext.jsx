@@ -7,6 +7,7 @@ const AppAuthContext = createContext()
 
 const AppAuthContextProvider = ({ children }) => {
     const [loading, setLoading] = useState(true)
+    const [dataLoading, setDataLoading] = useState(true)
     const [user, setUser] = useState(false)
 
     const auth = getAuth(app)
@@ -82,7 +83,9 @@ const updateUserProfile = (user = user, uName, photoUrl) => {
             signWithGithub,
             createUser,
             signin,
-            resetPassword
+            resetPassword,
+            dataLoading, 
+            setDataLoading
         }}>
             {children}
         </AppAuthContext.Provider>

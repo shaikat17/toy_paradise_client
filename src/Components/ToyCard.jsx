@@ -11,7 +11,7 @@ const ToyCard = ({ toy }) => {
     <p className='flex gap-2 items-center font-light'><span className='bg-[#D2EBF0] p-1 rounded font-normal w-20'>Quantity: </span>{toy?.quantity}</p>
     <p className='flex gap-2 items-center font-light'><span className='bg-[#D2EBF0] p-1 rounded font-normal w-20'>Seller: </span>{toy?.userName}</p>
     </div>
-    <div className="card-actions justify-end">
+    <div className="card-actions justify-end mt-4">
       <button className="btn border-none bg-[#56BC97]">View Details</button>
     </div>
   </div>

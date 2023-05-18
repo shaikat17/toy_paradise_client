@@ -1,15 +1,22 @@
 import React, { useEffect, useState } from "react";
+import { ColorRing } from "react-loader-spinner";
 import { useParams } from "react-router-dom";
 import Swal from "sweetalert2";
+import { useGlobalContext } from "../context/AppAuthContext";
 
 const EditToy = () => {
   const [toy, setToy] = useState({});
   const { id } = useParams();
+  const { dataLoading, setDataLoading } = useGlobalContext()
 
   const getToy = () => {
+    setDataLoading(true)
     fetch(`https://toy-paradise-server.vercel.app/single-toy/${id}`)
       .then((res) => res.json())
-      .then((data) => setToy(data));
+      .then((data) => {
+        setToy(data)
+        setDataLoading(false)
+      });
   }
 
   useEffect(() => {
@@ -29,6 +36,7 @@ const EditToy = () => {
 
     console.log(data);
 
+    setDataLoading(true)
     fetch(`https://toy-paradise-server.vercel.app/edit-toy/${toy._id}`, {
       method: "PUT",
       headers: {
@@ -47,11 +55,31 @@ const EditToy = () => {
             confirmButtonText: "Cool",
           });
           getToy();
+          setDataLoading(false)
         }
       });
 
     form.reset();
   };
+
+  if (dataLoading ) {
+    // console.log("priv", loading);
+    return (
+      <div className="flex items-center justify-center">
+        <ColorRing
+          visible={true}
+          height="80"
+          width="80"
+          ariaLabel="blocks-loading"
+          wrapperStyle={{}}
+          wrapperClass="blocks-wrapper"
+          colors={["#e15b64", "#f47e60", "#f8b26a", "#abbd81", "#849b87"]}
+        />
+      </div>
+    );
+  }
+
+
   return (
     <section className="p-5 mb-14">
       <h1>Edit {toy?.toyName}</h1>
