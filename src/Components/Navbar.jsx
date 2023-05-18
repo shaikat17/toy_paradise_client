@@ -14,7 +14,7 @@ const Navbar = () => {
         <li><NavLink to="/"
                 className={({ isActive }) =>
                   isActive
-                    ? "bg-transparent ml-2 uppercase text-orange-500 font-medium"
+                    ? "bg-transparent ml-2 uppercase text-[#56BC97] font-medium"
                     : "bg-transparent ml-2 uppercase font-medium"
                 }>Home</NavLink></li>
         <li><a>All Toys</a></li>
@@ -30,31 +30,31 @@ const Navbar = () => {
       <li><NavLink to="/"
                 className={({ isActive }) =>
                   isActive
-                    ? "bg-transparent ml-2 uppercase text-orange-500 font-medium"
+                    ? "bg-transparent ml-2 uppercase text-[#56BC97] font-medium"
                     : "bg-transparent ml-2 uppercase font-medium"
                 }>Home</NavLink></li>
       <li><NavLink to="/all-toys"
                 className={({ isActive }) =>
                   isActive
-                    ? "bg-transparent ml-2 uppercase text-orange-500 font-medium"
+                    ? "bg-transparent ml-2 uppercase text-[#56BC97] font-medium"
                     : "bg-transparent ml-2 uppercase font-medium"
                 }>All Toys</NavLink></li>
       <li><NavLink to="/my-toys"
                 className={({ isActive }) =>
                   isActive
-                    ? "bg-transparent ml-2 uppercase text-orange-500 font-medium"
+                    ? "bg-transparent ml-2 uppercase text-[#56BC97] font-medium"
                     : "bg-transparent ml-2 uppercase font-medium"
                 }>My Toys</NavLink></li>
       <li><NavLink to="/add-toy"
                 className={({ isActive }) =>
                   isActive
-                    ? "bg-transparent ml-2 uppercase text-orange-500 font-medium"
+                    ? "bg-transparent ml-2 uppercase text-[#56BC97] font-medium"
                     : "bg-transparent ml-2 uppercase font-medium"
                 }>Add A Toy</NavLink></li>
       <li><NavLink to="/blog"
                 className={({ isActive }) =>
                   isActive
-                    ? "bg-transparent ml-2 uppercase text-orange-500 font-medium"
+                    ? "bg-transparent ml-2 uppercase text-[#56BC97] font-medium"
                     : "bg-transparent ml-2 uppercase font-medium"
                 }>Blog</NavLink></li>
     </ul>

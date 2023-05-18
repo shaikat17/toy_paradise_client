@@ -12,6 +12,7 @@ const AddToy = () => {
     const category = form.category.value;
     const toyPrice = form.toyPrice.value;
     const toyRating = form.toyRating.value;
+    const quantity = form.quantity.value;
     const description = form.description.value;
 
     const data = {
@@ -22,6 +23,7 @@ const AddToy = () => {
       category,
       toyPrice,
       toyRating,
+      quantity,
       description,
     };
 
@@ -56,7 +58,7 @@ const AddToy = () => {
   return (
     <section className="grid place-items-center my-3">
       <h1 className="text-4xl font-bold mb-5">
-        Add a <span className="border-b-4 border-red-500">Toy</span>
+        Add a <span className="border-b-4 border-[#56BC97]">Toy</span>
       </h1>
       <form onSubmit={formHandle}>
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 p-2">

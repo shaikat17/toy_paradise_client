@@ -10,6 +10,8 @@ import { AppAuthContextProvider } from "./context/AppAuthContext";
 import Blog from "./Pages/Blog";
 import AllToys from "./Pages/AllToys";
 import MyToys from "./Pages/MyToys";
+import Login from "./Pages/Login";
+import Register from "./Pages/Register";
 
 const router = createBrowserRouter([
   {
@@ -60,6 +62,26 @@ const router = createBrowserRouter([
       {
         path: "/my-toys",
         element: <MyToys />,
+      },
+    ],
+  },
+  {
+    path: "/login",
+    element: <CommonLayout />,
+    children: [
+      {
+        path: "/login",
+        element: <Login />,
+      },
+    ],
+  },
+  {
+    path: "/register",
+    element: <CommonLayout />,
+    children: [
+      {
+        path: "/register",
+        element: <Register />,
       },
     ],
   },

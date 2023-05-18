@@ -6,7 +6,7 @@ import { useGlobalContext } from '../context/AppAuthContext';
 
 const Home = () => {
     const value = useGlobalContext()
-    console.log(value)
+    // console.log(value)
     return (
         <>
         <HomeBanner />
