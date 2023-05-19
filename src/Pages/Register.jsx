@@ -1,6 +1,7 @@
 import { useContext, useState } from 'react';
-import { NavLink, useNavigate } from 'react-router-dom';
+import { NavLink, useLocation, useNavigate } from 'react-router-dom';
 import { useGlobalContext } from '../context/AppAuthContext';
+import { changeTitle } from '../utils/dynamicTitle';
 
 const Register = () => {
     const [userName, setUserName] = useState('');
@@ -12,7 +13,9 @@ const Register = () => {
   const { createUser, logOut, updateUserProfile } = useGlobalContext()
 
   const navigate = useNavigate()
-
+// title Change
+const { pathname } = useLocation();
+changeTitle(pathname);
 
   const handleSubmit = (event) => {
     event.preventDefault();

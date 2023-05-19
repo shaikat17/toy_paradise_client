@@ -23,7 +23,7 @@ const ShopByCategory = () => {
     },[tabIndex])
 
   return (
-    <div className="px-2">
+    <div className="px-2 mb-20">
     <h1 className="text-center text-3xl font-black py-3"><span className="border-b-4 border-[#56BC97]">Shop By Category</span></h1>
     <Tabs selectedIndex={tabIndex} onSelect={(index) => setTabIndex(index)}>
       <TabList>

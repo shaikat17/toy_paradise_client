@@ -1,13 +1,18 @@
 import React, { useEffect, useState } from "react";
-import { ScrollRestoration, useParams } from "react-router-dom";
+import { ScrollRestoration, useLocation, useParams } from "react-router-dom";
 import { useGlobalContext } from "../context/AppAuthContext";
 import { Rating } from "@smastrom/react-rating";
 import { ColorRing } from "react-loader-spinner";
+import { changeTitle } from "../utils/dynamicTitle";
 
 const ViewToyDetails = () => {
   const [toy, setToy] = useState({});
   const { id } = useParams();
   const { dataLoading, setDataLoading } = useGlobalContext();
+
+  // title Change
+  const { pathname } = useLocation();
+  changeTitle(pathname);
 
   const getToy = () => {
     setDataLoading(true);
@@ -74,6 +79,12 @@ const ViewToyDetails = () => {
                 Quantity:
               </span>
               {toy?.quantity}</p>
+            </div>
+            <div>
+            <p><span className="rounded bg-[#56BC97] p-1 mr-2 ">
+                Seller Email:
+              </span>
+              {toy?.userEmail}</p>
             </div>
             <div>
             <span className="rounded bg-[#56BC97] p-1 mr-2 ">

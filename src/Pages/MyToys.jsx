@@ -2,9 +2,10 @@ import React, { useEffect, useState } from "react";
 import { Rating } from "@smastrom/react-rating";
 import { useGlobalContext } from "../context/AppAuthContext";
 import { FaPencilAlt, FaTrash } from "react-icons/fa";
-import { NavLink } from "react-router-dom";
+import { NavLink, useLocation } from "react-router-dom";
 import Swal from "sweetalert2";
 import { ColorRing } from "react-loader-spinner";
+import { changeTitle } from "../utils/dynamicTitle";
 
 const MyToys = () => {
   const { user } = useGlobalContext();
@@ -15,6 +16,10 @@ const MyToys = () => {
   const [srtValue, setSrtValue] = useState("");
 
   const { dataLoading, setDataLoading } = useGlobalContext();
+
+  // title Change
+  const { pathname } = useLocation();
+  changeTitle(pathname);
 
   useEffect(() => {
     // console.log(userEmail)
@@ -124,6 +129,7 @@ const MyToys = () => {
           </tr>
         </thead>
         <tbody>
+          {!myToys.length > 0 && <h1 className="text-2xl text-center font-black my-5">No Data Found</h1> }
           {/* row 1 */}
           {myToys.map((toy) => {
             return (

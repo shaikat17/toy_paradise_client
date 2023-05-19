@@ -5,7 +5,7 @@ import { NavLink } from "react-router-dom";
 const HomeBanner = () => {
   return (
     <section
-      className="h-screen w-full bg-center bg-cover relative bg-no-repeat"
+      className="h-screen w-full bg-center bg-cover relative bg-no-repeat mb-20"
       style={{ backgroundImage: `url(${banner})` }}
     >
       <div className="absolute absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 backdrop-brightness-90 h-full w-full text-white flex  justify-center flex-col text-center">

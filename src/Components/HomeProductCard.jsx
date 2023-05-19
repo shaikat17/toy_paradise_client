@@ -28,6 +28,7 @@ const HomeProductCard = ({
       });
     }
   };
+  
   return (
     <div className="shadow-lg rounded-lg overflow-hidden h-[350px]">
       <div className="h-2/5 pt-2">

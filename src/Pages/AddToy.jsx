@@ -1,8 +1,15 @@
 import Swal from "sweetalert2";
 import { useGlobalContext } from "../context/AppAuthContext";
+import { useLocation } from "react-router-dom";
+import { changeTitle } from "../utils/dynamicTitle";
 
 const AddToy = () => {
   const { user } = useGlobalContext()
+
+  // title Change
+  const { pathname } = useLocation();
+  changeTitle(pathname);
+
   const formHandle = (e) => {
     e.preventDefault();
     const form = e.target;

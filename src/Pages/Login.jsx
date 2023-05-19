@@ -6,6 +6,7 @@ import { useState } from "react";
 import { useGlobalContext } from "../context/AppAuthContext";
 import { ColorRing } from "react-loader-spinner";
 import Swal from "sweetalert2";
+import { changeTitle } from "../utils/dynamicTitle";
 
 function Login() {
   const [email, setEmail] = useState("");
@@ -15,6 +16,10 @@ function Login() {
 
   const navigate = useNavigate();
   const location = useLocation();
+
+  // title Change
+  const { pathname } = useLocation();
+  changeTitle(pathname);
 
   const from = location.state?.from?.pathname || "/";
 

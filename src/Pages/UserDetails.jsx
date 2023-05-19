@@ -3,9 +3,15 @@ import React, { useState } from "react";
 import { getAuth } from "firebase/auth";
 import { useGlobalContext } from "../context/AppAuthContext";
 import Swal from "sweetalert2";
+import { useLocation } from "react-router-dom";
+import { changeTitle } from "../utils/dynamicTitle";
 
 function UserDetails() {
     const { updateUserProfile, setLoading, updateUserEmail } = useGlobalContext()
+
+    // title Change
+  const { pathname } = useLocation();
+  changeTitle(pathname);
 
     const auth = getAuth()
 

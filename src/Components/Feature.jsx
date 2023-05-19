@@ -2,7 +2,7 @@ import { FaGlobe, FaLock, FaTags, FaUndo } from "react-icons/fa";
 
 const FeatureSection = () => {
   return (
-    <div className="grid grid-cols-1 sm:grid-cols-2 px-2 py-4 md:grid-cols-4 gap-6">
+    <div className="grid grid-cols-1 sm:grid-cols-2 px-2 py-4 md:grid-cols-4 gap-6 mb-20">
       <div className="hover:bg-[#D2EBF0] hover:transition-all hover:ease-in-out hover:duration-300 shadow-md p-6 rounded-lg flex flex-col items-center">
         <span>
           <FaGlobe size={"3rem"} color="#56BC97" />
