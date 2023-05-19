@@ -38,13 +38,13 @@ const Footer = () => {
             <Link className="hover:translate-x-2 hover:transition hover:ease-in-out hover:duration-300">
               FAQ
             </Link>
-            <Link className="hover:translate-x-2 hover:transition hover:ease-in-out hover:duration-300">
+            <Link to="/blog" className="hover:translate-x-2 hover:transition hover:ease-in-out hover:duration-300">
               Blog
             </Link>
           </div>
           <div className="flex flex-col space-y-3">
             <h1 className="mb-5 font-black text-xl">Extras</h1>
-            <Link className="hover:translate-x-2 hover:transition hover:ease-in-out hover:duration-300">
+            <Link to="/userdetails" className="hover:translate-x-2 hover:transition hover:ease-in-out hover:duration-300">
               My Account
             </Link>
             <Link className="hover:translate-x-2 hover:transition hover:ease-in-out hover:duration-300">

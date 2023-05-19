@@ -10,6 +10,7 @@ import ShopByCategory from "../Components/ShopByCategory";
 import PhotoGallery from "../Components/PhotoGallery";
 import { useLocation } from "react-router-dom";
 import { changeTitle } from "../utils/dynamicTitle";
+import AboutUs from "../Components/AboutUs";
 
 const Home = () => {
   useEffect(() => {
@@ -32,6 +33,9 @@ const Home = () => {
       </div>
       <div data-aos="fade-up">
         <ShopByCategory />
+      </div>
+      <div data-aos="fade-left">
+        <AboutUs />
       </div>
       <div data-aos="fade-right">
         <NewsLetter />
