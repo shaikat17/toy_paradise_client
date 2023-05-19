@@ -50,7 +50,7 @@ const AllToys = () => {
   const handleSearch = (event) => {
     event.preventDefault()
     setDataLoading(true);
-    fetch(`http://localhost:3000/toys/?q=${searchQuery}`)
+    fetch(`https://toy-paradise-server.vercel.app/toys/?q=${searchQuery}`)
       .then((res) => res.json())
       .then((data) => {
         setToys(data);
