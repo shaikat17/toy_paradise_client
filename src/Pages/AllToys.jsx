@@ -10,6 +10,7 @@ import { changeTitle } from "../utils/dynamicTitle";
 
 const AllToys = () => {
   const [toys, setToys] = useState([]);
+  const [searchQuery, setSearchQuery] = useState('');
 
   const { dataLoading, setDataLoading } = useGlobalContext();
 
@@ -46,6 +47,17 @@ const AllToys = () => {
   const { pathname } = useLocation();
   changeTitle(pathname);
 
+  const handleSearch = (event) => {
+    event.preventDefault()
+    setDataLoading(true);
+    fetch(`http://localhost:3000/toys/?q=${searchQuery}`)
+      .then((res) => res.json())
+      .then((data) => {
+        setToys(data);
+        setDataLoading(false);
+      });
+  }
+
   if (dataLoading) {
     // console.log("priv", loading);
     return (
@@ -64,7 +76,12 @@ const AllToys = () => {
   }
 
   return (
-    <table className="table w-full">
+    <div>
+      <h1 className="text-center text-3xl font-bold mb-10 "><span className="border-b-4 border-[#56BC97]">All Toys</span></h1>
+      <div className="flex justify-center gap-2 mb-2">
+        <input type="text" value={searchQuery} placeholder="Enter Your Query" className="border border-[#56BC97] px-2 rounded" onChange={(e) => setSearchQuery(e.target.value)} /> <button className="bg-[#56BC97] rounded text-white p-2" onClick={handleSearch}>Search</button>
+      </div>
+      <table className="table w-full">
       {/* head */}
       <thead>
         <tr>
@@ -129,6 +146,7 @@ const AllToys = () => {
         })}
       </tbody>
     </table>
+    </div>
   );
 };
 
