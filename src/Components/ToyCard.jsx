@@ -2,7 +2,7 @@ import React from 'react';
 
 const ToyCard = ({ toy }) => {
     return (
-        <div className="card h-[500px] bg-base-100 shadow-xl">
+        <div className="card h-[520px] bg-base-100 shadow-xl">
   <figure className='h-1/2'><img className='h-full' src={toy?.toyPhotoUrl} alt="Shoes" /></figure>
   <div className="card-body h-1/2">
     <h2 className="card-title border-b-2 border-green-400 pb-2">{toy?.toyName}</h2>

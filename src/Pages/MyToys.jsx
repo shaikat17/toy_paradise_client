@@ -12,69 +12,69 @@ const MyToys = () => {
     localStorage.getItem("userEmail") || user?.email
   );
   const [myToys, setMyToys] = useState([]);
-  const [srtValue, setSrtValue] = useState('')
+  const [srtValue, setSrtValue] = useState("");
 
-  const { dataLoading, setDataLoading } = useGlobalContext()
+  const { dataLoading, setDataLoading } = useGlobalContext();
 
   useEffect(() => {
     // console.log(userEmail)
-    setDataLoading(true)
-    fetch(`https://toy-paradise-server.vercel.app/user-toys/?email=${userEmail}`)
+    setDataLoading(true);
+    fetch(
+      `https://toy-paradise-server.vercel.app/user-toys/?email=${userEmail}`
+    )
       .then((res) => res.json())
       .then((data) => {
-        setMyToys(data)
-        setDataLoading(false)
+        setMyToys(data);
+        setDataLoading(false);
       });
   }, []);
 
   const handleSort = (e) => {
-    setSrtValue(e.target.value)
-    setDataLoading(true)
-    fetch(`https://toy-paradise-server.vercel.app/user-toys/?email=${userEmail}&sort=${e.target.value}`)
+    setSrtValue(e.target.value);
+    setDataLoading(true);
+    fetch(
+      `https://toy-paradise-server.vercel.app/user-toys/?email=${userEmail}&sort=${e.target.value}`
+    )
       .then((res) => res.json())
       .then((data) => {
         // console.log(data)
-        setMyToys(data)
-        setDataLoading(false)
+        setMyToys(data);
+        setDataLoading(false);
       });
-  }
+  };
 
-  const deleteProduct = id => {
+  const deleteProduct = (id) => {
     // e.preventDefault()
     // console.log(id)
 
     Swal.fire({
-      title: 'Are you want to delete it?',
+      title: "Are you want to delete it?",
       text: "You won't be able to revert this!",
-      icon: 'warning',
+      icon: "warning",
       showCancelButton: true,
-      confirmButtonColor: '#3085d6',
-      cancelButtonColor: '#d33',
-      confirmButtonText: 'Yes, delete it!'
+      confirmButtonColor: "#3085d6",
+      cancelButtonColor: "#d33",
+      confirmButtonText: "Yes, delete it!",
     }).then((result) => {
       if (result.isConfirmed) {
-        setDataLoading(true)
+        setDataLoading(true);
         fetch(`https://toy-paradise-server.vercel.app/toy/${id}`, {
-          method: 'DELETE'
+          method: "DELETE",
         })
-        .then(res => res.json())
-        .then(data => {
-          // console.log(data)
-          if(data.deletedCount > 0) {
-            Swal.fire(
-              'Deleted!',
-              'Your file has been deleted.',
-              'success'
-            )
-            setMyToys(prev => prev.filter(toy => toy._id !== id))
-            setDataLoading(false)
-          }
-        })
+          .then((res) => res.json())
+          .then((data) => {
+            // console.log(data)
+            if (data.deletedCount > 0) {
+              Swal.fire("Deleted!", "Your file has been deleted.", "success");
+              setMyToys((prev) => prev.filter((toy) => toy._id !== id));
+              setDataLoading(false);
+            }
+          });
       }
-    })
-  }
-  
-  if (dataLoading ) {
+    });
+  };
+
+  if (dataLoading) {
     // console.log("priv", loading);
     return (
       <div className="flex items-center justify-center">
@@ -93,24 +93,26 @@ const MyToys = () => {
 
   return (
     <div className="overflow-x-auto w-full">
-        <h1 className="text-center text-4xl font-black my-3">My <span className="border-b-4 border-[#56BC97]">Toys</span></h1>
-        <div className="flex items-center space-x-4 my-3">
-            <label htmlFor="option" className="font-bold">
-              Sort Toys:
-            </label>
-            <select
-              id="option"
-              className="px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
-              name="category"
-              value={srtValue}
-              onChange={handleSort}
-              required
-            >
-              <option value="">Sort Toys with Price</option>
-              <option value="ascending">Ascending</option>
-              <option value="descending">Descending</option>
-            </select>
-          </div>
+      <h1 className="text-center text-4xl font-black my-3">
+        My <span className="border-b-4 border-[#56BC97]">Toys</span>
+      </h1>
+      <div className="flex items-center space-x-4 my-3 p-2">
+        <label htmlFor="option" className="font-bold">
+          Sort Toys:
+        </label>
+        <select
+          id="option"
+          className="px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+          name="category"
+          value={srtValue}
+          onChange={handleSort}
+          required
+        >
+          <option value="">Sort Toys with Price</option>
+          <option value="ascending">Ascending</option>
+          <option value="descending">Descending</option>
+        </select>
+      </div>
       <table className="table w-full">
         {/* head */}
         <thead>
@@ -164,8 +166,12 @@ const MyToys = () => {
                   </div>
                 </td>
                 <th className="space-x-5 flex">
-                  <NavLink to={`/edit-toy/${toy._id}`}><FaPencilAlt color="#56BC97" size={"1.5rem"} /></NavLink>
-                  <button onClick={() => deleteProduct(toy._id)}><FaTrash color="#56BC97" size={"1.5rem"} /></button>
+                  <NavLink to={`/edit-toy/${toy._id}`}>
+                    <FaPencilAlt color="#56BC97" size={"1.5rem"} />
+                  </NavLink>
+                  <button onClick={() => deleteProduct(toy._id)}>
+                    <FaTrash color="#56BC97" size={"1.5rem"} />
+                  </button>
                 </th>
               </tr>
             );
