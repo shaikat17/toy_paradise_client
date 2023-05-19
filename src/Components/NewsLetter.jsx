@@ -23,7 +23,7 @@ function NewsLetter() {
   };
 
   return (
-    <section className="bg-gray-100 py-10 mb-20">
+    <section className="bg-gray-100 py-10 my-20">
       <div className="container mx-auto px-4">
         <h2 className="text-3xl font-bold mb-6">Subscribe to Our Newsletter</h2>
         <p className="text-gray-700 mb-6">Stay updated with the latest news and special offers.</p>

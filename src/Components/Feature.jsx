@@ -2,6 +2,8 @@ import { FaGlobe, FaLock, FaTags, FaUndo } from "react-icons/fa";
 
 const FeatureSection = () => {
   return (
+    <>
+    <h1 className='text-3xl text-center font-black mt-20 mb-3 p-1'><span className='border-b-4 border-red-500'>Features</span></h1>
     <div className="grid grid-cols-1 sm:grid-cols-2 px-2 py-4 md:grid-cols-4 gap-6 mb-20">
       <div className="hover:bg-[#D2EBF0] hover:transition-all hover:ease-in-out hover:duration-300 shadow-md p-6 rounded-lg flex flex-col items-center">
         <span>
@@ -40,6 +42,7 @@ const FeatureSection = () => {
         </p>
       </div>
     </div>
+    </>
   );
 };
 

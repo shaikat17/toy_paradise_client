@@ -81,6 +81,7 @@ const AllToys = () => {
       <div className="flex justify-center gap-2 mb-2">
         <input type="text" value={searchQuery} placeholder="Enter Your Query" className="border border-[#56BC97] px-2 rounded" onChange={(e) => setSearchQuery(e.target.value)} /> <button className="bg-[#56BC97] rounded text-white p-2" onClick={handleSearch}>Search</button>
       </div>
+      <div className="overflow-x-auto">
       <table className="table w-full">
       {/* head */}
       <thead>
@@ -146,6 +147,7 @@ const AllToys = () => {
         })}
       </tbody>
     </table>
+      </div>
     </div>
   );
 };

@@ -97,7 +97,7 @@ const MyToys = () => {
   }
 
   return (
-    <div className="overflow-x-auto w-full">
+    <div className="w-full">
       <h1 className="text-center text-4xl font-black my-3">
         My <span className="border-b-4 border-[#56BC97]">Toys</span>
       </h1>
@@ -118,6 +118,7 @@ const MyToys = () => {
           <option value="descending">Descending</option>
         </select>
       </div>
+      <div className="overflow-x-auto">
       <table className="table w-full">
         {/* head */}
         <thead>
@@ -129,7 +130,13 @@ const MyToys = () => {
           </tr>
         </thead>
         <tbody>
-          {!myToys.length > 0 && <tr><td className="text-2xl text-center font-black my-5">No Data Found</td></tr> }
+          {!myToys.length > 0 && (
+            <tr>
+              <td className="text-2xl text-center font-black my-5">
+                No Data Found
+              </td>
+            </tr>
+          )}
           {/* row 1 */}
           {myToys.map((toy) => {
             return (
@@ -184,6 +191,7 @@ const MyToys = () => {
           })}
         </tbody>
       </table>
+      </div>
     </div>
   );
 };
