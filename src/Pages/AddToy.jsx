@@ -19,7 +19,7 @@ const AddToy = () => {
     const userName = form.userName.value;
     const userEmail = form.userEmail.value;
     const category = form.category.value;
-    const toyPrice = form.toyPrice.value;
+    const toyPrice = Number(form.toyPrice.value);
     const toyRating = form.toyRating.value;
     const quantity = form.quantity.value;
     const description = form.description.value;

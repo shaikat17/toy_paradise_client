@@ -129,7 +129,7 @@ const MyToys = () => {
           </tr>
         </thead>
         <tbody>
-          {!myToys.length > 0 && <h1 className="text-2xl text-center font-black my-5">No Data Found</h1> }
+          {!myToys.length > 0 && <tr><td className="text-2xl text-center font-black my-5">No Data Found</td></tr> }
           {/* row 1 */}
           {myToys.map((toy) => {
             return (

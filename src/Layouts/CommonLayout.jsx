@@ -11,14 +11,10 @@ const CommonLayout = () => {
   }, []);
   return (
     <>
-      <div data-aos="fade-down">
-        <Navbar />
-      </div>
+      <Navbar />
 
       <Outlet />
-      <div data-aos="fade-up">
-        <Footer />
-      </div>
+      <Footer />
     </>
   );
 };

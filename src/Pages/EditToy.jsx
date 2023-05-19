@@ -29,12 +29,12 @@ const EditToy = () => {
     const form = e.target;
 
     const quantity = form.quantity.value;
-    const toyPrice = form.toyPrice.value;
+    const toyPrice = Number(form.toyPrice.value)
     const description = form.description.value;
 
     const data = { toyPrice, quantity, description };
 
-    console.log(data);
+    // console.log(data);
 
     setDataLoading(true)
     fetch(`https://toy-paradise-server.vercel.app/edit-toy/${toy._id}`, {
