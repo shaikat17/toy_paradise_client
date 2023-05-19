@@ -50,11 +50,27 @@ function Login() {
     signWithGoogle()
       .then((result) => {
         const loggedUser = result.user;
-        console.log(loggedUser);
+        // console.log(loggedUser);
         navigate(from, { replace: true });
         // setLoading(false)
       })
-      .catch((error) => console.log(error));
+      .catch((error) => {
+        console.log(error)
+        Swal.fire({
+          position: "center",
+          icon: "error",
+          title: "Opps!! Something went wrong. Please Try Again...",
+          showConfirmButton: true,
+          // timer: 1500,
+          confirmButtonText: 'Go Back'
+        }).then((result) => {
+          /* Read more about isConfirmed, isDenied below */
+          if (result.isConfirmed) {
+            // console.log("hello")
+            window.location.reload()
+          } 
+        })
+      });
   };
 
     // github signin
@@ -63,7 +79,7 @@ function Login() {
       signWithGithub()
         .then((result) => {
           const loggedUser = result.user;
-          console.log(loggedUser);
+          // console.log(loggedUser);
           navigate(from, { replace: true });
           // setLoading(false)
         })
@@ -79,7 +95,7 @@ function Login() {
           }).then((result) => {
             /* Read more about isConfirmed, isDenied below */
             if (result.isConfirmed) {
-              console.log("hello")
+              // console.log("hello")
               window.location.reload()
             } 
           })
@@ -95,7 +111,13 @@ function Login() {
     }
     resetPassword(email)
     .then(() => {
-      toast.info('Please Check Your Email')
+      Swal.fire({
+        position: "center",
+        icon: "warning",
+        title: "Please Check Your Email",
+        showConfirmButton: false,
+        timer: 1500,
+      });
     })
     .catch((error) => {
       console.log(err)

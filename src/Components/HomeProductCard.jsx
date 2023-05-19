@@ -1,6 +1,7 @@
 import { Rating } from "@smastrom/react-rating";
+import { NavLink } from "react-router-dom";
 
-const HomeProductCard = ({ toyPhotoUrl, toyName, toyPrice, toyRating }) => {
+const HomeProductCard = ({ _id, toyPhotoUrl, toyName, toyPrice, toyRating }) => {
   return (
     <div className="shadow-lg rounded-lg overflow-hidden h-[350px]">
       <div className="h-2/5 pt-2">
@@ -20,9 +21,11 @@ const HomeProductCard = ({ toyPhotoUrl, toyName, toyPrice, toyRating }) => {
                     value={Number(toyRating)}
                   />
         </div>
-        <button className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
-          View Details
-        </button>
+       <div>
+       <NavLink className="bg-[#56BC97] p-2 rounded text-white" to={`/toy-details/${_id}`}>
+                  View Details 
+                </NavLink>
+       </div>
       </div>
     </div>
   );

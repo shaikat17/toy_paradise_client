@@ -2,6 +2,9 @@ import { useEffect, useState } from 'react';
 import ToyCard from '../Components/ToyCard';
 import { useGlobalContext } from '../context/AppAuthContext';
 import { ColorRing } from 'react-loader-spinner';
+import { NavLink } from 'react-router-dom';
+import { FaPencilAlt, FaTrash } from 'react-icons/fa';
+import { Rating } from '@smastrom/react-rating';
 
 const AllToys = () => {
     const [toys, setToys] = useState([])
@@ -36,9 +39,71 @@ const AllToys = () => {
       }
 
     return (
-        <div className='grid grid-cols-1 md:grid-cols-2 gap-3 p-2 lg:grid-cols-3'>
-            {toys.map(toy => <ToyCard key={toy._id} toy={toy} />)}
-        </div>
+      <table className="table w-full">
+      {/* head */}
+      <thead>
+        <tr>
+          <th>Doll Image & Name</th>
+          <th>Ratings</th>
+          <th>Price & Quantity</th>
+          <th>Action</th>
+        </tr>
+      </thead>
+      <tbody>
+        {/* row 1 */}
+        {toys.map((toy) => {
+          return (
+            <tr key={toy._id}>
+              <td>
+                <div className="flex items-center space-x-3">
+                  <div className="avatar">
+                    <div className="mask mask-square w-14 h-14">
+                      <img src={toy?.toyPhotoUrl} alt={toy?.toyName} />
+                    </div>
+                  </div>
+                  <div>
+                    <div className="font-bold">{toy?.toyName}</div>
+                    <div className="text-sm my-1 space-x-2">
+                      <span className="rounded bg-[#56BC97] p-1">
+                        {toy?.category}
+                      </span>
+                      <span className="rounded bg-[#56BC97] p-1">
+                        Seller:
+                      </span> {toy?.userName}
+                    </div>
+                  </div>
+                </div>
+              </td>
+              <td>
+                <Rating
+                  style={{ maxWidth: 150 }}
+                  value={Number(toy?.toyRating)}
+                />
+              </td>
+              <td>
+                <div className="text-sm mb-2">
+                  <span className="rounded bg-[#56BC97] p-1 mr-2">
+                    Price:
+                  </span>
+                  {toy?.toyPrice} Taka
+                </div>
+                <div className="text-sm mt-2">
+                  <span className="rounded bg-[#56BC97] p-1 mr-2">
+                    Quantity:
+                  </span>
+                  {toy?.quantity}
+                </div>
+              </td>
+              <th className="space-x-5 flex">
+                 <NavLink className="bg-[#56BC97] p-2 rounded text-white" to={`/toy-details/${toy._id}`}>
+                  View Details 
+                </NavLink>
+              </th>
+            </tr>
+          );
+        })}
+      </tbody>
+    </table>
     );
 };
 

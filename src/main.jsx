@@ -16,6 +16,7 @@ import Register from "./Pages/Register";
 import UserDetails from "./Pages/UserDetails";
 import PrivateRoute from "./PrivateRoute/PrivateRoute";
 import EditToy from "./Pages/EditToy";
+import ViewToyDetails from "./Pages/ViewToyDetails";
 
 const router = createBrowserRouter([
   {
@@ -106,6 +107,16 @@ const router = createBrowserRouter([
       {
         path: "/edit-toy/:id",
         element: <PrivateRoute><EditToy /></PrivateRoute>,
+      },
+    ],
+  },
+  {
+    path: "/toy-details/:id",
+    element: <CommonLayout />,
+    children: [
+      {
+        path: "/toy-details/:id",
+        element: <PrivateRoute><ViewToyDetails /></PrivateRoute>,
       },
     ],
   },

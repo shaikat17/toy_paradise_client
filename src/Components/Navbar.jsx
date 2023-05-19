@@ -104,6 +104,7 @@ const Navbar = () => {
                   </button>
                 </li>
               ) : (
+                <>
                 <li>
                   <NavLink
                     to="/login"
@@ -116,6 +117,19 @@ const Navbar = () => {
                     Login
                   </NavLink>
                 </li>
+                <li>
+                <NavLink
+                  to="/register"
+                  className={({ isActive }) =>
+                    isActive
+                      ? "bg-transparent ml-2 uppercase text-[#56BC97] font-medium"
+                      : "bg-transparent ml-2 uppercase font-medium"
+                  }
+                >
+                  Register
+                </NavLink>
+              </li>
+              </>
               )}
             </ul>
           </div>
@@ -193,6 +207,7 @@ const Navbar = () => {
                 </button>
               </li>
             ) : (
+              <>
               <li>
                 <NavLink
                   to="/login"
@@ -205,6 +220,19 @@ const Navbar = () => {
                   Login
                 </NavLink>
               </li>
+              <li>
+                <NavLink
+                  to="/register"
+                  className={({ isActive }) =>
+                    isActive
+                      ? "bg-transparent ml-2 uppercase text-[#56BC97] font-medium"
+                      : "bg-transparent ml-2 uppercase font-medium"
+                  }
+                >
+                  Register
+                </NavLink>
+              </li>
+              </>
             )}
           </ul>
         </div>
