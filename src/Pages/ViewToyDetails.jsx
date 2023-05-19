@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
+import { ScrollRestoration, useParams } from "react-router-dom";
 import { useGlobalContext } from "../context/AppAuthContext";
 import { Rating } from "@smastrom/react-rating";
 import { ColorRing } from "react-loader-spinner";
@@ -39,10 +39,10 @@ const ViewToyDetails = () => {
               colors={["#e15b64", "#f47e60", "#f8b26a", "#abbd81", "#849b87"]}
             />
           </div> : <div className="card lg:card-side bg-base-100 shadow-xl items-center mb-4">
-        <div className="w-2/5 p-4">
+        <div className="w-full md:w-2/5 p-4">
           <img className="w-80" src={toy?.toyPhotoUrl} alt={toy?.toyName} />
         </div>
-        <div className="card-body w-3/5 ">
+        <div className="card-body w-full md:w-3/5 ">
           <h2 className="card-title text-2xl font-bold">
             <span className="border-b-4 border-[#56BC97]">Name:</span>{" "}
             {toy?.toyName}
@@ -83,6 +83,7 @@ const ViewToyDetails = () => {
             </div>
         </div>
       </div>}
+      <ScrollRestoration />
     </>
   );
 };
