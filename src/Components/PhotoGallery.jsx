@@ -5,7 +5,7 @@ const PhotoGallery = () => {
     { id: 1, src: 'https://i.ibb.co/hyNtVDJ/il-1140x-N-4549285087-1125.webp', title: 'Hoop William Cloth Baby Doll' },
     { id: 2, src: 'https://i.ibb.co/v4f9Vsj/il-1140x-N-4888460633-2x54.webp', title: 'Beret Hat for Fashion Royalty' },
     { id: 3, src: 'https://i.ibb.co/0ysJLhz/il-1140x-N-4942420865-9pg6.jpg', title: 'Teddiursa Pokemon Plushies' },
-    { id: 3, src: 'https://i.ibb.co/xF75DTS/616k3-Rmy3-GL-AC-SL1500.jpg', title: 'Black & White Tuxedo Cat' },
+    { id: 4, src: 'https://i.ibb.co/xF75DTS/616k3-Rmy3-GL-AC-SL1500.jpg', title: 'Black & White Tuxedo Cat' },
   ];
 
   return (

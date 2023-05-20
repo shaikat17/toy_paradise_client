@@ -8,6 +8,7 @@ const EditToy = () => {
   const [toy, setToy] = useState({});
   const { id } = useParams();
   const { dataLoading, setDataLoading } = useGlobalContext()
+  const [updateState , setUpdateState] = useState(false)
 
   const getToy = () => {
     setDataLoading(true)
@@ -21,11 +22,11 @@ const EditToy = () => {
 
   useEffect(() => {
     getToy()
-  }, []);
+  }, [updateState]);
 
   const handleForm = (e) => {
     e.preventDefault();
-
+    setUpdateState(true)
     const form = e.target;
 
     const quantity = form.quantity.value;
@@ -46,8 +47,7 @@ const EditToy = () => {
     })
       .then((res) => res.json())
       .then((data) => {
-        // console.log(data)
-        getToy();
+        console.log(data)
         if (data.acknowledged) {
           Swal.fire({
             title: "Success!",
@@ -56,6 +56,7 @@ const EditToy = () => {
             confirmButtonText: "Cool",
           });
         }
+        setUpdateState(false)
         setDataLoading(false)
       });
 

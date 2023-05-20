@@ -21,26 +21,33 @@ const Home = () => {
   changeTitle(pathname);
 
   return (
-    <>
-      <div data-aos="fade-right">
+    <div className="overflow-x-hidden">
+      <div data-aos="fade-left">
         <HomeBanner />
       </div>
-      <div data-aos="fade-up-left">
+      <div data-aos="fade-right">
         <PhotoGallery />
       </div>
-      <div data-aos="fade-right">
+      <div data-aos="fade-left">
         <FeatureSection />
       </div>
-      <div data-aos="fade-up">
+      <div data-aos="fade-left">
         <ShopByCategory />
       </div>
-      <div data-aos="fade-left">
+      <div data-aos="fade-down">
         <AboutUs />
       </div>
-      <div data-aos="fade-right">
+      <div data-aos="fade-left">
         <NewsLetter />
       </div>
-    </>
+
+      {/* <HomeBanner />
+      <PhotoGallery />
+      <FeatureSection />
+      <ShopByCategory />
+      <AboutUs />
+      <NewsLetter /> */}
+    </div>
   );
 };
 
